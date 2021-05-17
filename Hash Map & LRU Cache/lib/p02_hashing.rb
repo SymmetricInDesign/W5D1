@@ -54,7 +54,17 @@ class Hash
   # This returns 0 because rspec will break if it returns nil
   # Make sure to implement an actual Hash#hash method
   def hash
-    0
+    hash_int = 1 
+    return 450000 if self.keys.empty? 
+    self.keys.each_with_index do |el, i|
+      hash_int += el.hash 
+    end
+
+    self.values.each_with_index do |ele, idx|
+      hash_int += ele.hash 
+    end
+
+    hash_int
   end
 end
 
